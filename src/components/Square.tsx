@@ -1,14 +1,25 @@
 type SquareProps = {
+  draw: boolean;
   handleTurn: (index: number) => void;
   index: number;
   value: string;
+  winner: string | null;
   xTurn: boolean;
 };
 
-const Square = ({ handleTurn, index, value, xTurn }: SquareProps) => {
+const Square = ({
+  draw,
+  handleTurn,
+  index,
+  value,
+  winner,
+  xTurn,
+}: SquareProps) => {
   return (
     <button
-      className={xTurn ? "Square x-turn" : "Square o-turn"}
+      className={
+        winner || draw ? "Square" : xTurn ? "Square x-turn" : "Square o-turn"
+      }
       onClick={() => handleTurn(index)}
     >
       {value}
