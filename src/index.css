@@ -6,14 +6,19 @@
   padding: 0;
 }
 
-h1,
-p {
-  color: white;
+h1 {
+  font-family: "Galada", cursive;
+  font-size: 4rem;
+  letter-spacing: 6px;
+  text-align: start;
+  margin-left: 0.5em;
 }
 
 h2,
-button {
+button,
+label {
   color: #003031;
+  font-family: "Roboto Mono", monospace;
 }
 
 label {
@@ -24,19 +29,34 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   gap: 2em;
-  min-height: 86vh;
-  padding-top: 5em;
+  min-height: 84vh;
   background: linear-gradient(45deg, #a8dede, #ccefef);
 }
 
 header,
 footer {
-  height: 7vh;
   background-color: #0f4e63;
   text-align: center;
+  padding: 0.5em;
+  color: white;
+}
+
+footer {
+  font-family: "Roboto Mono", monospace;
   padding: 1em;
+}
+
+.setup-heading {
+  margin-top: 2em;
+  font-size: 2.5rem;
+}
+
+.setup-instructions {
+  color: #003031;
+  font-size: 1.3rem;
+  font-family: "Roboto Mono", monospace;
+  margin: 0 1em;
 }
 
 .setup-form {
@@ -51,12 +71,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3em;
-}
-
-input[type="radio"] {
-  width: 1.5rem;
-  height: 1.5rem;
+  gap: 5em;
 }
 
 .boardOption-label {
@@ -125,8 +140,79 @@ input[type="radio"] {
   border-radius: 20px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   margin-bottom: 1em;
+  cursor: pointer;
 }
 
 .buttons:hover {
   background-color: #b5be7c;
+}
+
+/********** MEDIA QUERY **********/
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 3rem;
+    margin-left: 0.5em;
+  }
+  .setup-heading {
+    margin-top: 1em;
+    font-size: 2rem;
+  }
+
+  .setup-instructions {
+    color: #003031;
+    font-size: 1.1rem;
+  }
+
+  .setup-inputs {
+    gap: 1em;
+    flex-wrap: wrap;
+  }
+
+  .boardOption-label {
+    padding: 0.5em;
+  }
+
+  .Square {
+    height: 80px;
+    width: 80px;
+    font-size: 2.5rem;
+  }
+
+  .x-turn:hover {
+    cursor: url("./assets/xCheckerSmall.png"), auto;
+  }
+
+  .o-turn:hover {
+    cursor: url("./assets/oCheckerSmall.png"), auto;
+  }
+}
+
+/********** MEDIA QUERY **********/
+@media (max-width: 630px) {
+  .Square {
+    height: 65px;
+    width: 65px;
+    font-size: 2rem;
+  }
+
+  .winning-square {
+    border: 5px solid #0f4e63;
+  }
+}
+
+/********** MEDIA QUERY **********/
+@media (max-width: 500px) {
+  .Square {
+    height: 48px;
+    width: 48px;
+    font-size: 1.7rem;
+  }
+
+  .x-turn:hover {
+    cursor: url("./assets/xCheckerXS.png"), auto;
+  }
+
+  .o-turn:hover {
+    cursor: url("./assets/oCheckerXS.png"), auto;
+  }
 }

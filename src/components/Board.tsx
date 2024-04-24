@@ -69,7 +69,12 @@ const Board = ({
 
   return (
     <>
-      <Outcome draw={draw} winner={winner} isXTurn={isXTurn} />
+      <Outcome
+        boardSize={boardSize}
+        draw={draw}
+        winner={winner}
+        isXTurn={isXTurn}
+      />
       <div
         className="Board"
         style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)` }}

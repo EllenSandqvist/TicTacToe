@@ -63,7 +63,11 @@ const GameSetup = () => {
         />
       ) : (
         <>
-          <h2>Choose board size:</h2>
+          <h2 className="setup-heading">Choose board size:</h2>
+          <p className="setup-instructions">
+            On the 3x3 board, it's three in a row for victory. On the 5x5 and
+            7x7 boards, it's four in a row.
+          </p>
           <form className="setup-form" onSubmit={(e) => e.preventDefault()}>
             <div className="setup-inputs">
               {boardOptions.map((option) => (
