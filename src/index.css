@@ -24,14 +24,16 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* justify-content: center; */
   gap: 2em;
-  min-height: 83vh;
-  padding-top: 2em;
+  min-height: 86vh;
+  padding-top: 5em;
   background: linear-gradient(45deg, #a8dede, #ccefef);
 }
 
 header,
 footer {
+  height: 7vh;
   background-color: #0f4e63;
   text-align: center;
   padding: 1em;
@@ -45,14 +47,11 @@ footer {
 }
 
 .setup-inputs {
-  display: flex;
-  gap: 3em;
-}
-
-.boardSize-text {
+  padding: 1em;
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  justify-content: center;
+  gap: 3em;
 }
 
 input[type="radio"] {
@@ -60,11 +59,20 @@ input[type="radio"] {
   height: 1.5rem;
 }
 
-.boardSize-div {
+.boardOption-label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5em;
+  padding: 1em;
+}
+
+.boardOption-label:hover {
+  cursor: pointer;
+}
+
+.active {
+  border: 5px solid #0f4e63;
+  border-radius: 20px;
 }
 
 .Outcome {
@@ -105,12 +113,18 @@ input[type="radio"] {
   cursor: url("./assets/oChecker.png"), auto;
 }
 
+.winning-square {
+  border: 10px solid #0f4e63;
+  background-color: #fafaa3;
+}
+
 .buttons {
   background-color: #e7a4d4;
   font-size: 1.5rem;
   padding: 0.2em 1em;
   border-radius: 20px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1em;
 }
 
 .buttons:hover {

@@ -1,10 +1,13 @@
+//Import of types
+import { Player } from "../types/types";
+
 type SquareProps = {
   draw: boolean;
   handleTurn: (index: number) => void;
   index: number;
-  value: string;
-  winner: string | null;
-  xTurn: boolean;
+  value: Player | null;
+  winnerLine: number[] | null;
+  isXTurn: boolean;
 };
 
 const Square = ({
@@ -12,13 +15,19 @@ const Square = ({
   handleTurn,
   index,
   value,
-  winner,
-  xTurn,
+  winnerLine,
+  isXTurn,
 }: SquareProps) => {
   return (
     <button
       className={
-        winner || draw ? "Square" : xTurn ? "Square x-turn" : "Square o-turn"
+        winnerLine && winnerLine.includes(index)
+          ? "Square winning-square"
+          : draw
+          ? "Square"
+          : isXTurn
+          ? "Square x-turn"
+          : "Square o-turn"
       }
       onClick={() => handleTurn(index)}
     >
