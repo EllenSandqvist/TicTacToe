@@ -3,20 +3,22 @@ import { Player } from "../types/types";
 
 type OutcomeProps = {
   boardSize: number;
-  draw: boolean;
+  isDraw: boolean;
   winner: Player | null;
   isXTurn: boolean;
 };
 
-const Outcome = ({ boardSize, draw, winner, isXTurn }: OutcomeProps) => {
+const Outcome = ({ boardSize, isDraw, winner, isXTurn }: OutcomeProps) => {
   return (
     <h2
       style={{ marginTop: boardSize === 7 ? "1em" : "4em" }}
-      className={winner ? "Outcome winner" : draw ? "Outcome draw" : "Outcome"}
+      className={
+        winner ? "Outcome winner" : isDraw ? "Outcome draw" : "Outcome"
+      }
     >
       {winner
         ? `The winner is ${winner}`
-        : draw
+        : isDraw
         ? "Draw"
         : `Next player ${isXTurn ? "❌" : "🟢"}`}
     </h2>

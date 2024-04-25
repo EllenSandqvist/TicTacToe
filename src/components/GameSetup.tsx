@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+//Import components
 import Board from "./Board";
 import BoardOption from "./BoardOption";
 
@@ -19,18 +21,19 @@ const GameSetup = () => {
   //State that holds turns
   const [isXTurn, setIsXTurn] = useState(true);
 
-  // States that holds winner and indexes of winning line
+  // States that holds draw, winner and indexes of winning line
   const [winner, setWinner] = useState<Player | null>(null);
   const [winnerLine, setWinnerLine] = useState<number[] | null>(null);
+  const [isDraw, setIsDraw] = useState(false);
 
   const handleChangeSize: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const newSize = Number(e.target.value);
-    console.log(newSize);
     setBoardSize(newSize);
     setMoves(Array(newSize * newSize).fill(null));
     setWinner(null);
     setWinnerLine(null);
     setIsXTurn(true);
+    setIsDraw(false);
   };
 
   const handleStart: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -44,6 +47,7 @@ const GameSetup = () => {
     setWinner(null);
     setWinnerLine(null);
     setIsXTurn(true);
+    setIsDraw(false);
   };
 
   return (
@@ -52,6 +56,8 @@ const GameSetup = () => {
         <Board
           boardSize={boardSize}
           handleRestart={handleRestart}
+          isDraw={isDraw}
+          setIsDraw={setIsDraw}
           moves={moves}
           setMoves={setMoves}
           winner={winner}

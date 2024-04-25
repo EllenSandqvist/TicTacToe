@@ -2,7 +2,7 @@
 import { Player } from "../types/types";
 
 type SquareProps = {
-  draw: boolean;
+  isDraw: boolean;
   handleTurn: (index: number) => void;
   index: number;
   value: Player | null;
@@ -11,7 +11,7 @@ type SquareProps = {
 };
 
 const Square = ({
-  draw,
+  isDraw,
   handleTurn,
   index,
   value,
@@ -20,10 +20,11 @@ const Square = ({
 }: SquareProps) => {
   return (
     <button
+      //Use of winnerLine to apply styling on the squares in the winning line
       className={
         winnerLine && winnerLine.includes(index)
           ? "Square winning-square"
-          : draw
+          : isDraw
           ? "Square"
           : isXTurn
           ? "Square x-turn"

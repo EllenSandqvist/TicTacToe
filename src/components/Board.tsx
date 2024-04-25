@@ -15,6 +15,8 @@ import { Player, SquareValue } from "../types/types";
 type BoardProps = {
   boardSize: number;
   handleRestart: React.MouseEventHandler<HTMLButtonElement>;
+  isDraw: boolean;
+  setIsDraw: React.Dispatch<React.SetStateAction<boolean>>;
   moves: SquareValue[];
   setMoves: React.Dispatch<React.SetStateAction<SquareValue[]>>;
   winner: Player | null;
@@ -28,6 +30,8 @@ type BoardProps = {
 const Board = ({
   boardSize,
   handleRestart,
+  isDraw,
+  setIsDraw,
   moves,
   setMoves,
   winner,
@@ -38,7 +42,7 @@ const Board = ({
   setIsXTurn,
 }: BoardProps) => {
   const handleTurn = (i: number) => {
-    //if square is already filled or if game is settled return
+    //if square is already filled or if game is settled, return
     if (moves[i] || winner || checkDraw(moves)) {
       return;
     }
@@ -46,13 +50,14 @@ const Board = ({
     //copy the moves array
     const nextMoves = [...moves];
 
-    //fill the right square with X or O
+    //fill the chosen square with X or O
     nextMoves[i] = isXTurn ? "❌" : "🟢";
 
     setMoves(nextMoves);
     setIsXTurn(!isXTurn);
   };
 
+  // useEffect to check for winner, winning line or draw
   useEffect(() => {
     const winningLine =
       moves.length === 9
@@ -62,16 +67,19 @@ const Board = ({
     if (winningLine) {
       setWinner(winningLine.winner);
       setWinnerLine(winningLine.winningIndexes);
+    } else {
+      const draw = checkDraw(moves);
+      if (draw) {
+        setIsDraw(true);
+      }
     }
   }, [moves]);
-
-  const draw = checkDraw(moves);
 
   return (
     <>
       <Outcome
         boardSize={boardSize}
-        draw={draw}
+        isDraw={isDraw}
         winner={winner}
         isXTurn={isXTurn}
       />
@@ -82,7 +90,7 @@ const Board = ({
         {moves.map((_, index) => (
           <Square
             key={index}
-            draw={draw}
+            isDraw={isDraw}
             handleTurn={handleTurn}
             index={index}
             value={moves[index]}

@@ -1,6 +1,7 @@
 //Import of types
 import { SquareValue } from "../types/types";
 
+//Separate function to check for winner on the small board
 export function checkWinner3x3(moves: SquareValue[]) {
   const winnerLines = [
     [0, 1, 2],
@@ -12,20 +13,24 @@ export function checkWinner3x3(moves: SquareValue[]) {
     [1, 4, 7],
     [2, 5, 8],
   ];
-
+  // loop through all possible winning lines and check if the checkers in the line are of same kind
   for (let i = 0; i < winnerLines.length; i++) {
     const [a, b, c] = winnerLines[i];
     if (moves[a] && moves[a] === moves[b] && moves[a] === moves[c]) {
       const winningIndexes = [a, b, c];
-      return { winner: moves[winningIndexes[0]], winningIndexes };
+      //return both winner and indexes for winning line
+      return { winner: moves[a], winningIndexes };
     }
   }
   return null;
 }
 
+// Function to check for a winner on 5x5 and 7x7 board
 export function checkWinnerLarge(moves: SquareValue[], boardSize: number) {
+  //to win on 5x5 or 7x7 board 4 checkers in a row is needed
   const winningRowLength = 4;
 
+  //call functions to get all possible winnings lines
   const horizontalLines = generateHorizontalLines(boardSize, winningRowLength);
 
   const verticalLines = generateVerticalLines(boardSize, winningRowLength);
@@ -40,6 +45,7 @@ export function checkWinnerLarge(moves: SquareValue[], boardSize: number) {
     winningRowLength
   );
 
+  // combine all possible winninglines in winnerLines
   const winnerLines = [
     ...horizontalLines,
     ...verticalLines,
@@ -47,7 +53,7 @@ export function checkWinnerLarge(moves: SquareValue[], boardSize: number) {
     ...diagonalLinesRightToLeft,
   ];
 
-  // use winner lines to check for winner
+  // loop through all possible winnerLines to check for winner
   for (let i = 0; i < winnerLines.length; i++) {
     const [a, b, c, d] = winnerLines[i];
     if (
@@ -57,6 +63,7 @@ export function checkWinnerLarge(moves: SquareValue[], boardSize: number) {
       moves[a] === moves[d]
     ) {
       const winningIndexes = [a, b, c, d];
+      //return both winner and indexes for winning line
       return { winner: moves[a], winningIndexes };
     }
   }
@@ -64,6 +71,8 @@ export function checkWinnerLarge(moves: SquareValue[], boardSize: number) {
 }
 
 // ***** FUNCTIONS TO FIND POSSIBLE WINNING LINES *****
+
+//Function to find all possible horizontal winning lines
 const generateHorizontalLines = (boardSize: number, rowLength: number) => {
   const lines = [];
 
@@ -80,6 +89,7 @@ const generateHorizontalLines = (boardSize: number, rowLength: number) => {
   return lines;
 };
 
+//Function to find all possible vertical winning lines
 const generateVerticalLines = (boardSize: number, rowLength: number) => {
   const lines = [];
 
@@ -96,6 +106,7 @@ const generateVerticalLines = (boardSize: number, rowLength: number) => {
   return lines;
 };
 
+//Function to find all possible diagonal from left to right winning lines
 const generateDiagonalLinesLeftToRight = (
   boardSize: number,
   rowLength: number
@@ -115,6 +126,7 @@ const generateDiagonalLinesLeftToRight = (
   return lines;
 };
 
+//Function to find all possible diagonal from right to left winning lines
 const generateDiagonalLinesRightToLeft = (
   boardSize: number,
   rowLength: number
@@ -135,6 +147,7 @@ const generateDiagonalLinesRightToLeft = (
 };
 
 // ***** FUNCTION TO CHECK FOR DRAW *****
+// are run after check for winner, so this will only run if there is no winner
 export function checkDraw(moves: SquareValue[]) {
   return moves.every((move) => move !== null);
 }

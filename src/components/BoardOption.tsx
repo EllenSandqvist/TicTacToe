@@ -1,3 +1,4 @@
+//Import img of boards
 import board3x3 from "../assets/board3x3.png";
 import board5x5 from "../assets/board5x5.png";
 import board7x7 from "../assets/board7x7.png";
@@ -16,6 +17,7 @@ const BoardOptions = ({
   value,
 }: BoardOptionsProps) => {
   return (
+    //The choosen board get the "active" className
     <div className={`boardSize-div ${checked ? "active" : ""}`}>
       <input
         type="radio"
@@ -24,6 +26,7 @@ const BoardOptions = ({
         value={value}
         checked={checked}
         onChange={handleChangeSize}
+        //radio button hidden, the user can press the label tag instead
         style={{ display: "none" }}
       />
       <label className="boardOption-label" htmlFor={id}>
