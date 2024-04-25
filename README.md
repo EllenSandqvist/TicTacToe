@@ -1,7 +1,9 @@
-#Tic Tac Toe
+# Tic Tac Toe
+
 This Tic Tac Toe game is built using React with TypeScript.
 
-##Rules
+## Rules
+
 Tic Tac Toe is a classic two-player game where players take turns marking spaces on a 3x3, 5x5, or 7x7 grid.
 
 3x3 Board
@@ -10,7 +12,7 @@ For the 3x3 board, the objective of the game is to be the first player to get th
 5x5 and 7x7 Boards
 For the 5x5 and 7x7 boards, the objective is to be the first player to get four of their symbols in a row, column, or diagonal.
 
-###To play the game:
+### To play the game:
 
 - layer 1 (X) and Player 2 (O) take turns placing their symbol on an empty square on the grid.
 - The game continues until one player achieves a winning combination or all squares are filled.
