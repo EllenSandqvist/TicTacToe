@@ -12,6 +12,8 @@ h1 {
   letter-spacing: 6px;
   text-align: start;
   margin: 0.2em 0 0 0.5em;
+  text-shadow: -2px -2px 0 rgb(161, 105, 0), 2px -2px 0 rgb(161, 105, 0),
+    -2px 2px 0 rgb(161, 105, 0), 2px 2px 0 rgb(161, 105, 0);
 }
 
 h2,
