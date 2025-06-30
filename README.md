@@ -14,7 +14,7 @@ For the 5x5 and 7x7 boards, the objective is to be the first player to get four 
 
 ### To play the game:
 
-- layer 1 (X) and Player 2 (O) take turns placing their symbol on an empty square on the grid.
+- Player 1 (X) and Player 2 (O) take turns placing their symbol on an empty square on the grid.
 - The game continues until one player achieves a winning combination or all squares are filled.
 - If a player successfully gets the required number of their symbols in a row, column, or diagonal, they win the game.
 - If all squares are filled and there is no winner, the game ends in a draw.
